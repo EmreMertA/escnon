@@ -7,8 +7,8 @@ const Login = (props: Props) => {
   return (
     <div className='container'>
       <div className='card'>
-        <p>Connect Your Wallet</p>
-        <button>BAĞLA</button>
+        <p>Welcome to Escnon</p>
+        <button>Connect Your Wallet</button>
       </div>
     </div>
   );
