@@ -1,14 +1,13 @@
-.container {
+.login__container {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f5f5f5;
-  background-image: url('../../assets/background.svg');
+  background-image: url('../assets/background.svg');
 }
 
-.card {
+.login__card {
   width: 300px;
   height: 200px;
   background-color: #36393f;

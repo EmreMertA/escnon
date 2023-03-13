@@ -24,6 +24,7 @@ type Props = {
 
 export const TransactionProvider: React.FC<Props> = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState<string>('');
+
   const checkIfWalletIsConnected = async () => {
     if (!ethereum) return alert('Please install MetaMask');
 
@@ -32,17 +33,10 @@ export const TransactionProvider: React.FC<Props> = ({ children }) => {
   };
 
   const connectWallet = async () => {
-    console.log('connectWallet');
+    if (!ethereum) return alert('Please install MetaMask');
 
-    try {
-      const accounts = await ethereum.request({
-        method: 'eth_requestAccounts',
-      });
-      console.log(accounts);
-    } catch (error) {
-      console.log(error);
-      throw new Error("Can't connect to wallet");
-    }
+    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+    setCurrentAccount(accounts[0]);
   };
 
   useEffect(() => {
