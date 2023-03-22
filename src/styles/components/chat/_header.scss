@@ -1,3 +1,17 @@
-.chatHeader{
-  color: red;
+.chatHeader {
+  color: white;
+  background-color: $bg-base;
+  padding: 0px 10px;
+  font-size: 20px;
+  height: 57px;
+  border-bottom: 1px solid $bg-darker;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 }

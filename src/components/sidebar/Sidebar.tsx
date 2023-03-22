@@ -1,17 +1,45 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AiOutlineDown, AiOutlinePlus } from 'react-icons/ai';
 import { BiHash, BiTrash, BiLabel } from 'react-icons/bi';
-import { IoPersonCircleSharp, IoExitOutline } from 'react-icons/io5';
+import { IoExitOutline } from 'react-icons/io5';
 import { shortenAddress } from '../../utils/shortenAddress';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { TransactionContext } from '../../context/TransactionContext';
+import { firestore } from '../../firebase';
+
 type Props = {};
 
 const Sidebar = (props: Props) => {
   const [chatsHidden, setChatsHidden] = useState<boolean>(false);
   const [escrowsHidden, setEscrowsHidden] = useState<boolean>(false);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { currentAccount } = useContext(TransactionContext);
+  console.log(currentAccount);
+
+  const path = location.pathname.split('/')[2];
+  console.log(path);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await firestore.collection('chats').get();
+      console.log(response.docs.map((doc: any) => doc.data()));
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className='sidebar'>
-      <h1 className='sidebar__title'>ESCNON</h1>
+      <h1
+        onClick={() => {
+          navigate('/dashboard');
+        }}
+        className='sidebar__title'
+      >
+        ESCNON
+      </h1>
       <hr />
       <button
         onClick={() => setChatsHidden(!chatsHidden)}
@@ -31,22 +59,28 @@ const Sidebar = (props: Props) => {
         }`}
       >
         <li>
-          <div>
+          <Link
+            className='sidebar__content__link'
+            to={'/chats/0xd87563ca01c3ec2a747e409f810afd137a686652'}
+          >
             <BiHash />
             <p>
               {shortenAddress('0xd87563ca01c3ec2a747e409f810afd137a686652')}
             </p>
-          </div>
+          </Link>
           <BiTrash />
         </li>
 
         <li>
-          <div>
+          <Link
+            className='sidebar__content__link'
+            to={'/chats/0xd87563ca01c3ec2a747e409f810afd137a686652'}
+          >
             <BiHash />
             <p>
               {shortenAddress('0xd87563ca01c3ec2a747e409f810afd137a686652')}
             </p>
-          </div>
+          </Link>
           <BiTrash />
         </li>
       </ul>
@@ -99,11 +133,10 @@ const Sidebar = (props: Props) => {
         </li>
       </ul>
       {/* Profile */}
-          
 
       <div className='sidebar__profile'>
         <div>
-          <p>{shortenAddress('0x4D16AB6FE0152901922cD3b53d285582c2571E6A')}</p>
+          <p>{shortenAddress(currentAccount)}</p>
         </div>
         <IoExitOutline style={{ fontSize: '24px' }} />
       </div>

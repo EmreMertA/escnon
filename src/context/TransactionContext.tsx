@@ -38,13 +38,16 @@ export const TransactionProvider: React.FC<Props> = ({ children }) => {
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     setCurrentAccount(accounts[0]);
   };
+  console.log(currentAccount);
 
   useEffect(() => {
     checkIfWalletIsConnected();
   }, []);
 
   return (
-    <TransactionContext.Provider value={{ connectWallet, currentAccount }}>
+    <TransactionContext.Provider
+      value={{ connectWallet, currentAccount }}
+    >
       {children}
     </TransactionContext.Provider>
   );

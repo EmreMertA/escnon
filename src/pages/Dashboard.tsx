@@ -5,14 +5,7 @@ import { Sidebar } from '../components/sidebar';
 type Props = {};
 
 const Dashboard = (props: Props) => {
-  return (
-    <div className='container__dashboard'>
-      <Sidebar />
-      <div className='dashboard__content'>
-        <Chat />
-      </div>
-    </div>
-  );
+  return <div>Anasayfa</div>;
 };
 
 export default Dashboard;

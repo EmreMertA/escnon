@@ -5,6 +5,8 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { TransactionContext } from './context/TransactionContext';
 import Dashboard from './pages/Dashboard';
 import './styles/style.scss';
+import Chat from './components/chat/Chat';
+import Layout from './components/chat/Layout';
 
 const App = () => {
   const { currentAccount } = useContext(TransactionContext);
@@ -13,11 +15,14 @@ const App = () => {
 
   if (currentAccount) {
     return (
-      <Routes>
-        <Route path='/' element={<Navigate to='/dashboard' />} />
-        <Route path='/login' element={<Navigate to='/dashboard' />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<Navigate to='/dashboard' />} />
+          <Route path='/login' element={<Navigate to='/dashboard' />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/:walletId' element={<Chat />} />
+        </Routes>
+      </Layout>
     );
   } else {
     return (

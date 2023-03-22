@@ -1,3 +1,4 @@
+
 html,
 body,
 div,
@@ -122,3 +123,17 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #40444b;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #2e3036;
+    border-radius: 10px;
+  }
