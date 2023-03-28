@@ -29,7 +29,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 10px;
     cursor: pointer;
     border-radius: 10px;
 
@@ -84,6 +83,7 @@
       border-radius: 10px;
       padding: 5px 10px;
       color: $text-lighter;
+
       &:hover {
         background-color: $bg-base;
         transition: 0.3s;
@@ -103,8 +103,10 @@
 
     &__link {
       color: $text-lighter;
+      width: 100%;
+
       display: flex;
-      justify-content: center;
+      justify-content: start;
       align-items: center;
       flex-direction: row;
       text-decoration: none;
@@ -154,6 +156,90 @@
       p {
         margin-left: 10px;
         font-size: 14px;
+      }
+    }
+  }
+
+  &__modal {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    &__content {
+      width: 400px;
+      height: 200px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      z-index: 1000;
+      background-color: $bg-darker;
+
+      &__input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 80%;
+
+        input {
+          width: 100%;
+          height: 40px;
+          border-radius: 10px;
+          border: none;
+          padding: 0 10px;
+          margin-bottom: 10px;
+        }
+      }
+
+      &__button {
+        width: 85%;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        margin-bottom: 10px;
+        background-color: $bg-base;
+        color: $text-lighter;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        &:hover {
+          background-color: $bg-darker;
+          transition: 0.3s;
+        }
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: $text-lighter;
+        margin-bottom: 20px;
+      }
+
+      &__close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        color: $text-lighter;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        height: 20px;
+        width: 20px;
       }
     }
   }

@@ -1,5 +1,6 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/firestore';
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
   // Firebase yapılandırma ayarları
@@ -12,9 +13,10 @@ const firebaseConfig = {
   measurementId: 'G-MY4YPN09S0',
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // Firestore örneği oluşturun
-const firestore = firebase.firestore();
+const db = getFirestore(app);
+const database = getDatabase(app);
 
-export { firestore };
+export { db,database };

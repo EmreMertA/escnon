@@ -11,7 +11,6 @@ import Layout from './components/chat/Layout';
 const App = () => {
   const { currentAccount } = useContext(TransactionContext);
 
-  console.log(currentAccount);
 
   if (currentAccount) {
     return (
@@ -20,7 +19,7 @@ const App = () => {
           <Route path='/' element={<Navigate to='/dashboard' />} />
           <Route path='/login' element={<Navigate to='/dashboard' />} />
           <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/:walletId' element={<Chat />} />
+          <Route path='/chats/:walletId' element={<Chat />} />
         </Routes>
       </Layout>
     );
@@ -35,3 +34,4 @@ const App = () => {
 };
 
 export default App;
+ 
